@@ -1,6 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".QuickCallActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+
+    <!-- "GPS", should appear as action button if possible -->
+    <item
+        android:id="@+id/action_gps"
+        android:icon="@mipmap/ic_gps"
+        android:title="GPS"
+        app:showAsAction="ifRoom"/>
 </menu>
