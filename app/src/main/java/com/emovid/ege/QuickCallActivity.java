@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.content.Intent;
+import android.net.Uri;
 
 public class QuickCallActivity extends AppCompatActivity {
 
@@ -28,8 +30,13 @@ public class QuickCallActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.action_gps:
+                Intent i = new Intent(Intent.ACTION_VIEW,Uri.parse("geo:37.827500,-122.481670"));
+                i.setClassName("com.google.android.apps.maps",
+                    "com.google.android.maps.MapsActivity");
+                startActivity(i);
+                break;
         }
 
         return super.onOptionsItemSelected(item);
