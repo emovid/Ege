@@ -4,6 +4,14 @@
     android:layout_height="match_parent"
     android:stretchColumns="0, 1"
     android:touchscreenBlocksFocus="false">
+    <android.support.v7.widget.Toolbar
+        android:layout_height="?attr/actionBarSize"
+        android:background="#00A2E9"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:layout_gravity="fill_horizontal"
+        android:id="@+id/my_toolbar" />
 
     <TableRow
         android:layout_width="match_parent"
@@ -24,12 +32,12 @@
                 android:orientation="vertical"
                 android:layout_gravity="center"
                 android:background="#587498"
-                android:padding="5dp">
+                android:padding="10dp">
                 <ImageButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/ic_police"
-                    android:scaleType="fitXY"
+                    android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
                     android:background="@android:color/transparent" />
                 <TextView
@@ -58,14 +66,14 @@
                 android:orientation="vertical"
                 android:clipChildren="false"
                 android:background="#E86850"
-                android:padding="5dp">
+                android:padding="10dp">
                 <ImageButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/ic_fire"
                     android:adjustViewBounds="true"
                     android:background="@android:color/transparent"
-                    android:scaleType="fitXY" />
+                    android:scaleType="fitCenter" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -99,13 +107,13 @@
                 android:orientation="vertical"
                 android:layout_gravity="center"
                 android:background="#587058"
-                android:padding="5dp">
+                android:padding="10dp">
 
                 <ImageButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/ic_ambulance"
-                    android:scaleType="fitXY"
+                    android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
                     android:background="@android:color/transparent" />
 
@@ -136,7 +144,7 @@
                 android:orientation="vertical"
                 android:clipChildren="false"
                 android:background="#FFD800"
-                android:padding="5dp">
+                android:padding="10dp">
 
                 <ImageButton
                     android:layout_width="match_parent"
@@ -144,7 +152,7 @@
                     android:src="@mipmap/ic_sar"
                     android:adjustViewBounds="true"
                     android:background="@android:color/transparent"
-                    android:scaleType="fitXY" />
+                    android:scaleType="fitCenter" />
 
                 <TextView
                     android:layout_width="wrap_content"
