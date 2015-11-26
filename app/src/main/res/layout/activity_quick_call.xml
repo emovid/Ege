@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:stretchColumns="0, 1"
-    android:touchscreenBlocksFocus="false">
+    android:touchscreenBlocksFocus="false"
+    android:background="#ffffff">
     <android.support.v7.widget.Toolbar
         android:layout_height="?attr/actionBarSize"
         android:background="#00A2E9"
