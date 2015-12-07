@@ -27,13 +27,15 @@
             android:paddingTop="10dp"
             android:paddingRight="5dp"
             android:paddingBottom="5dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_gravity="center"
                 android:background="#587498"
-                android:padding="10dp">
+                android:padding="10dp"
+                android:id="@+id/button_police">
                 <ImageButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -49,6 +51,28 @@
                     android:paddingBottom="4dp"
                     android:layout_gravity="center"
                     android:textColor="#ffffff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:visibility="visible"
+                android:gravity="center"
+                android:background="#7f000000"
+                android:id="@+id/transparent_layer_police">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="110"
+                    android:textSize="@dimen/call_button_textsize"
+                    android:paddingBottom="4dp"
+                    android:layout_gravity="center"
+                    android:textColor="#ffffff"
+                    android:id="@+id/phone_number_police" />
             </LinearLayout>
         </FrameLayout>
 
@@ -67,7 +91,8 @@
                 android:orientation="vertical"
                 android:clipChildren="false"
                 android:background="#E86850"
-                android:padding="10dp">
+                android:padding="10dp"
+                android:id="@+id/button_fire">
                 <ImageButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -82,6 +107,28 @@
                     android:textSize="@dimen/call_button_textsize"
                     android:layout_gravity="center"
                     android:textColor="#ffffff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:visibility="visible"
+                android:gravity="center"
+                android:background="#7f000000"
+                android:id="@+id/transparent_layer_fire">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="113"
+                    android:textSize="@dimen/call_button_textsize"
+                    android:paddingBottom="4dp"
+                    android:layout_gravity="center"
+                    android:textColor="#ffffff"
+                    android:id="@+id/phone_number_fire" />
             </LinearLayout>
         </FrameLayout>
 
@@ -108,7 +155,8 @@
                 android:orientation="vertical"
                 android:layout_gravity="center"
                 android:background="#587058"
-                android:padding="10dp">
+                android:padding="10dp"
+                android:id="@+id/button_ambulance">
 
                 <ImageButton
                     android:layout_width="match_parent"
@@ -126,6 +174,28 @@
                     android:paddingBottom="4dp"
                     android:layout_gravity="center"
                     android:textColor="#ffffff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:visibility="visible"
+                android:gravity="center"
+                android:background="#7f000000"
+                android:id="@+id/transparent_layer_ambulance">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="118"
+                    android:textSize="@dimen/call_button_textsize"
+                    android:paddingBottom="4dp"
+                    android:layout_gravity="center"
+                    android:textColor="#ffffff"
+                    android:id="@+id/phone_number_ambulance" />
             </LinearLayout>
         </FrameLayout>
 
@@ -145,7 +215,9 @@
                 android:orientation="vertical"
                 android:clipChildren="false"
                 android:background="#FFD800"
-                android:padding="10dp">
+                android:padding="10dp"
+                android:id="@+id/button_sar"
+                android:onClick="onClick">
 
                 <ImageButton
                     android:layout_width="match_parent"
@@ -162,6 +234,28 @@
                     android:textSize="@dimen/call_button_textsize"
                     android:layout_gravity="center"
                     android:textColor="#ffffff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:visibility="visible"
+                android:gravity="center"
+                android:background="#7f000000"
+                android:id="@+id/transparent_layer_sar">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="115"
+                    android:textSize="@dimen/call_button_textsize"
+                    android:paddingBottom="4dp"
+                    android:layout_gravity="center"
+                    android:textColor="#ffffff"
+                    android:id="@+id/phone_number_sar" />
             </LinearLayout>
         </FrameLayout>
     </TableRow>
