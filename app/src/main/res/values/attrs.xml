@@ -2,7 +2,10 @@
 <resources>
     <declare-styleable name="CallButtonOptions">
         <attr name="text" format="string" localization="suggested" />
-        <attr name="ico_src" format="reference" />
+        <attr name="phone" format="string" localization="suggested" />
+        <attr name="icon_src" format="reference" />
         <attr name="background_color" format="color" />
+        <attr name="shade_color" format="color" />
+        <attr name="shade_alpha" format="integer" />
     </declare-styleable>
 </resources>
