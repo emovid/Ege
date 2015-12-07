@@ -161,7 +161,7 @@ public class CallButton extends FrameLayout implements View.OnTouchListener {
 
     public void setPhoneNumber(String phone) {
         phone = (phone == null) ? "110" : phone;
-        TextView phoneNum = (TextView) this.getRootView().findViewById(R.id.phone);
+        TextView phoneNum = (TextView) this.findViewById(R.id.phone);
         phoneNum.setText(phone);
         this.phone = phone;
     }
@@ -176,10 +176,12 @@ public class CallButton extends FrameLayout implements View.OnTouchListener {
         long pressTime = System.currentTimeMillis();
 
         if (pressTime - lastPressTime <= DOUBLE_PRESS_INTERVAL) {
+            Log.d("Touch Action", "Double Tap");
             // If double click...
-            // Call activity
-
+            Log.d("PHONE Number", this.getPhoneNumber().toString());
+            ((QuickCallActivity) this.context).callPhoneNumber(this.getPhoneNumber());
         } else {
+            Log.d("Touch Action", "A Tap");
             // If not double click....
             // Animate
             int widgetWidth = this.getWidth();
