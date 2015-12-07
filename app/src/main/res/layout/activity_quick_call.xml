@@ -31,6 +31,7 @@
             app:icon_src="@mipmap/ic_police"
             app:background_color="#587498"
             app:shade_color="#4fff4f"
+            app:phone="110"
             app:shade_alpha="55"
             app:text="Police"/>
 
@@ -46,6 +47,7 @@
             android:layout_height="match_parent"
             app:icon_src="@mipmap/ic_fire"
             app:background_color="#b93029"
+            app:phone="113"
             app:shade_color="#4fff4f"
             app:shade_alpha="55"
             app:text="Fire"/>
@@ -69,6 +71,7 @@
             app:icon_src="@mipmap/ic_ambulance"
             app:background_color="#587058"
             app:shade_color="#4fff4f"
+            app:phone="118"
             app:shade_alpha="55"
             app:text="Ambulance"/>
 
@@ -84,6 +87,7 @@
             android:layout_height="match_parent"
             app:icon_src="@mipmap/ic_sar"
             app:background_color="#FFD800"
+            app:phone="115"
             app:shade_color="#4fff4f"
             app:shade_alpha="55"
             app:text="SAR"/>
