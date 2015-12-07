@@ -28,10 +28,14 @@
             android:paddingTop="10dp"
             android:paddingRight="5dp"
             android:paddingBottom="5dp"
-            app:ico_src="@mipmap/ic_police"
-            app:background_color="#587498"/>
+            app:icon_src="@mipmap/ic_police"
+            app:background_color="#587498"
+            app:shade_color="#4fff4f"
+            app:shade_alpha="55"
+            app:text="Police"/>
 
-        <FrameLayout
+        <com.emovid.ege.view.CallButton
+            android:id="@+id/button_fire"
             android:layout_column="1"
             android:layout_weight="0.5"
             android:layout_width="0dp"
@@ -39,54 +43,12 @@
             android:paddingTop="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="5dp"
-            android:layout_height="match_parent">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:clipChildren="false"
-                android:background="#E86850"
-                android:padding="10dp"
-                android:id="@+id/button_fire">
-                <ImageButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_fire"
-                    android:adjustViewBounds="true"
-                    android:background="@android:color/transparent"
-                    android:scaleType="fitCenter" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Fire"
-                    android:textSize="@dimen/call_button_textsize"
-                    android:layout_gravity="center"
-                    android:textColor="#ffffff" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_gravity="center"
-                android:padding="10dp"
-                android:visibility="visible"
-                android:gravity="center"
-                android:background="#7f000000"
-                android:id="@+id/transparent_layer_fire">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="113"
-                    android:textSize="@dimen/call_button_textsize"
-                    android:paddingBottom="4dp"
-                    android:layout_gravity="center"
-                    android:textColor="#ffffff"
-                    android:id="@+id/phone_number_fire" />
-            </LinearLayout>
-        </FrameLayout>
-
+            android:layout_height="match_parent"
+            app:icon_src="@mipmap/ic_fire"
+            app:background_color="#b93029"
+            app:shade_color="#4fff4f"
+            app:shade_alpha="55"
+            app:text="Fire"/>
     </TableRow>
 
     <TableRow
@@ -94,7 +56,8 @@
         android:layout_height="match_parent"
         android:weightSum="1.0" >
 
-        <FrameLayout
+        <com.emovid.ege.view.CallButton
+            android:id="@+id/button_ambulance"
             android:layout_column="0"
             android:layout_weight="0.5"
             android:layout_width="0dp"
@@ -102,59 +65,15 @@
             android:paddingTop="10dp"
             android:paddingRight="5dp"
             android:paddingBottom="5dp"
-            android:layout_height="wrap_content" >
+            android:layout_height="match_parent"
+            app:icon_src="@mipmap/ic_ambulance"
+            app:background_color="#587058"
+            app:shade_color="#4fff4f"
+            app:shade_alpha="55"
+            app:text="Ambulance"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_gravity="center"
-                android:background="#587058"
-                android:padding="10dp"
-                android:id="@+id/button_ambulance">
-
-                <ImageButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_ambulance"
-                    android:scaleType="fitCenter"
-                    android:adjustViewBounds="true"
-                    android:background="@android:color/transparent" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ambulance"
-                    android:textSize="@dimen/call_button_textsize"
-                    android:paddingBottom="4dp"
-                    android:layout_gravity="center"
-                    android:textColor="#ffffff" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_gravity="center"
-                android:padding="10dp"
-                android:visibility="visible"
-                android:gravity="center"
-                android:background="#7f000000"
-                android:id="@+id/transparent_layer_ambulance">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="118"
-                    android:textSize="@dimen/call_button_textsize"
-                    android:paddingBottom="4dp"
-                    android:layout_gravity="center"
-                    android:textColor="#ffffff"
-                    android:id="@+id/phone_number_ambulance" />
-            </LinearLayout>
-        </FrameLayout>
-
-        <FrameLayout
+        <com.emovid.ege.view.CallButton
+            android:id="@+id/button_sar"
             android:layout_column="1"
             android:layout_weight="0.5"
             android:layout_width="0dp"
@@ -162,56 +81,11 @@
             android:paddingTop="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="5dp"
-            android:layout_height="match_parent" >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:clipChildren="false"
-                android:background="#FFD800"
-                android:padding="10dp"
-                android:id="@+id/button_sar"
-                android:onClick="onClick">
-
-                <ImageButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_sar"
-                    android:adjustViewBounds="true"
-                    android:background="@android:color/transparent"
-                    android:scaleType="fitCenter" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SAR"
-                    android:textSize="@dimen/call_button_textsize"
-                    android:layout_gravity="center"
-                    android:textColor="#ffffff" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_gravity="center"
-                android:padding="10dp"
-                android:visibility="visible"
-                android:gravity="center"
-                android:background="#7f000000"
-                android:id="@+id/transparent_layer_sar">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="115"
-                    android:textSize="@dimen/call_button_textsize"
-                    android:paddingBottom="4dp"
-                    android:layout_gravity="center"
-                    android:textColor="#ffffff"
-                    android:id="@+id/phone_number_sar" />
-            </LinearLayout>
-        </FrameLayout>
+            android:layout_height="match_parent"
+            app:icon_src="@mipmap/ic_sar"
+            app:background_color="#FFD800"
+            app:shade_color="#4fff4f"
+            app:shade_alpha="55"
+            app:text="SAR"/>
     </TableRow>
 </TableLayout>
