@@ -27,6 +27,8 @@ public class CallButton extends FrameLayout implements View.OnTouchListener {
     final int DOUBLE_PRESS_INTERVAL = 2000;
     long lastPressTime;
 
+    private String phone;
+
     Context context;
 
     public CallButton(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -62,13 +64,13 @@ public class CallButton extends FrameLayout implements View.OnTouchListener {
 
         // Text
         String text = a.getString(R.styleable.CallButtonOptions_text);
-        text = (text == null)? "Button" : text;
+        text = (text == null) ? "Button" : text;
         TextView caption = (TextView) inner.findViewById(R.id.caption);
         caption.setText(text);
 
         // Phone
         String phone = a.getString(R.styleable.CallButtonOptions_phone);
-        phone = (phone == null)? "000" : phone;
+        phone = (phone == null) ? "000" : phone;
         TextView phoneNum = (TextView) shade.findViewById(R.id.phone);
         phoneNum.setText(phone);
 
@@ -77,6 +79,17 @@ public class CallButton extends FrameLayout implements View.OnTouchListener {
 
         addView(inner);
         addView(shade);
+    }
+
+    public void setPhoneNumber(String phone) {
+        phone = (phone == null) ? "110" : phone;
+        TextView phoneNum = (TextView) this.getRootView().findViewById(R.id.phone);
+        phoneNum.setText(phone);
+        this.phone = phone;
+    }
+
+    public String getPhoneNumber() {
+        return this.phone;
     }
 
     @Override
