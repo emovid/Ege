@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="#587498"
     android:padding="10dp"
-    android:id="@+id/inner_container">
+    android:id="@+id/outer_container">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="#587498"
+        android:padding="10dp"
+        android:id="@+id/inner_container" >
 
         <ImageButton
             android:layout_width="match_parent"
@@ -15,7 +23,7 @@
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             android:background="@android:color/transparent"
-            android:id="@+id/ico" />
+            android:id="@+id/icon" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -26,4 +34,28 @@
             android:layout_gravity="center"
             android:textColor="#ffffff"
             android:id="@+id/caption" />
-</LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:visibility="visible"
+        android:gravity="center"
+        android:background="#7f000000"
+        android:id="@+id/shade_container" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="113"
+            android:textSize="@dimen/call_button_textsize"
+            android:paddingBottom="4dp"
+            android:layout_gravity="center"
+            android:textColor="#ffffff"
+            android:id="@+id/phone" />
+    </LinearLayout>
+</FrameLayout>
