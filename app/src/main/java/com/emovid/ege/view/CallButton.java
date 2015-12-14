@@ -104,7 +104,8 @@ public class CallButton extends FrameLayout implements View.OnTouchListener {
         shadeAlpha = shade_alpha;
         shade.setBackgroundColor(shade_bg);
         // Initially, makes it invisible
-        shade.setAlpha(0.1f);
+        shade.setAlpha(shadeAlpha);
+        shade.setVisibility(View.INVISIBLE);
 
         // Text
         String text = a.getString(R.styleable.CallButtonOptions_text);
@@ -173,15 +174,17 @@ public class CallButton extends FrameLayout implements View.OnTouchListener {
                 Log.d(QuickCallActivity.PACKAGE_NAME, "onTouch().action :: A Tap");
                 Log.d(QuickCallActivity.PACKAGE_NAME, "onTouch().animate :: Fade to and from " + shadeAlpha);
 
-                AlphaAnimation fadeIn = new AlphaAnimation(shade.getAlpha(), shadeAlpha);
+                AlphaAnimation fadeIn = new AlphaAnimation(0f, 1f);
                 fadeIn.setInterpolator(new LinearInterpolator());
-                fadeIn.setDuration(500);
+                fadeIn.setDuration(800);
                 fadeIn.setFillBefore(false);
 
-                AlphaAnimation fadeOut = new AlphaAnimation(shadeAlpha, shade.getAlpha());
-                fadeOut.setDuration(800);
+
+                AlphaAnimation fadeOut = new AlphaAnimation(1f, 0f);
+                fadeOut.setDuration(900);
                 fadeOut.setInterpolator(new LinearInterpolator());
                 fadeOut.setFillAfter(true);
+
 
                 AnimationSet fades = new AnimationSet(false);
                 fades.addAnimation(fadeIn);
