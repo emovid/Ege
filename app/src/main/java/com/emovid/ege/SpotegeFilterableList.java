@@ -1,16 +1,26 @@
 package com.emovid.ege;
 
 import java.util.ArrayList;
+import android.util.Log;
 
 class SpotegeFilterableList extends ArrayList<Spotege> {
     public Spotege nearestSpotege(double latitude, double longitude, SpotegeType type) {
         double distance = 0.0d;
-        int idx = -1;
+        int idx = 0;
         int i = 0;
         for (Spotege sp : this) {
+            // It is compatible in type
             if (sp.isType(type)) {
-                // It is compatible in type
                 double d = getDistance(sp, latitude, longitude);
+                if (idx == 0) {
+                    distance = d;
+                }
+
+                Log.d(QuickCallActivity.PACKAGE_NAME, "nearestSpotege().spotege :: " + sp.getName());
+                Log.d(QuickCallActivity.PACKAGE_NAME, "nearestSpotege().spotege-phone :: " + sp.getPhone());
+                Log.d(QuickCallActivity.PACKAGE_NAME, "nearestSpotege().spotege-distance :: " + d);
+                Log.d(QuickCallActivity.PACKAGE_NAME, "nearestSpotege().spotege-min-distance :: " + distance);
+
                 if (d == 0.0d) {
                     distance = d;
                 }
