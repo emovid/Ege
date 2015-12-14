@@ -3,22 +3,30 @@ package com.emovid.ege;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.location.Address;
+import android.location.Criteria;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.google.android.gms.maps.model.LatLng;
 
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlacePicker;
+import java.io.IOException;
+
+import java.util.List;
+import java.util.Locale;
 
 public class QuickCallActivity extends AppCompatActivity {
-    int PLACE_PICKER_REQUEST = 1;
-    Place place;
+    LatLng userLocation;
+    String cityName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +34,40 @@ public class QuickCallActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quick_call);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+        getUserLocation();
+
+        myToolbar.setTitle("Ege on " + cityName);
+    }
+
+    public void getUserLocation() {
+        LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+        String provider = service.getBestProvider(criteria, false);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        Location location = service.getLastKnownLocation(provider);
+        userLocation = new LatLng(location.getLatitude(), location.getLongitude());
+
+        Geocoder gcd = new Geocoder(this.getApplicationContext(), Locale.getDefault());
+        List<Address> adrs;
+
+        try {
+            adrs = gcd.getFromLocation(userLocation.latitude, userLocation.longitude, 1);
+            cityName = adrs.get(0).getLocality();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Log.d("[Location latitude]", "" + userLocation.latitude);
+        Log.d("[Location longitude]", "" + userLocation.longitude);
     }
 
     @Override
@@ -44,26 +86,11 @@ public class QuickCallActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_gps) {
-            PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
-            try {
-                startActivityForResult(builder.build(this), PLACE_PICKER_REQUEST);
-            } catch (GooglePlayServicesRepairableException e) {
-                e.printStackTrace();
-            } catch (GooglePlayServicesNotAvailableException e) {
-                e.printStackTrace();
-            }
+            getUserLocation();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == PLACE_PICKER_REQUEST) {
-            if (resultCode == RESULT_OK) {
-                this.place = PlacePicker.getPlace(data, this);
-            }
-        }
     }
 
     public void callPhoneNumber(String number) {
