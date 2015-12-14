@@ -63,6 +63,10 @@ public class QuickCallActivity extends AppCompatActivity {
             return;
         }
         Location location = service.getLastKnownLocation(provider);
+        if (location == null) {
+            Log.d("[getUserLocation()]", "Location not found");
+            return;
+        }
         userLocation = new LatLng(location.getLatitude(), location.getLongitude());
 
         Geocoder gcd = new Geocoder(this.getApplicationContext(), Locale.getDefault());
