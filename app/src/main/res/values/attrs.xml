@@ -6,6 +6,6 @@
         <attr name="icon_src" format="reference" />
         <attr name="background_color" format="color" />
         <attr name="shade_color" format="color" />
-        <attr name="shade_alpha" format="integer" />
+        <attr name="shade_alpha" format="float" />
     </declare-styleable>
 </resources>
