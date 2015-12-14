@@ -1,38 +1,25 @@
 package com.emovid.ege.view;
 
-import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.content.res.TypedArray;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.support.v4.app.ActivityCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.AnimationSet;
 import android.view.animation.LinearInterpolator;
-import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.emovid.ege.QuickCallActivity;
 import com.emovid.ege.R;
-import com.google.android.gms.vision.Frame;
 
 /**
  * Created by abdillah on 21/11/15.
