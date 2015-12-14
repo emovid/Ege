@@ -53,6 +53,11 @@ public class QuickCallActivity extends AppCompatActivity implements LocationList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quick_call);
 
+        policeButton    = (CallButton) findViewById(R.id.button_police);
+        ambulanceButton = (CallButton) findViewById(R.id.button_ambulance);
+        sarButton       = (CallButton) findViewById(R.id.button_sar);
+        fireButton      = (CallButton) findViewById(R.id.button_fire);
+
         // Input data
         //                      (latitude   , longitude   , TYPE read SpotEge.java, name          , phone       )
         spoteges.add(new SpotEge(-7.770476,  110.384954,  SpotEgeType.POLICE,    "Polisi Sektor Bulak Sumur ",   "0274557111"));
