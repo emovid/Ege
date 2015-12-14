@@ -36,14 +36,14 @@ public class CallButton extends FrameLayout implements View.OnTouchListener {
 
     LinearLayout inner;
     LinearLayout shade;
+    ImageButton iconBtn;
+    TextView captionView;
 
     public CallButton(Context context) {
         super(context);
         this.context = context;
         inflateView();
-        this.setOnTouchListener(this);
-        inner.setOnTouchListener(this);
-        shade.setOnTouchListener(this);
+        setViewListener();
     }
 
     public CallButton(Context context, AttributeSet attrs) {
@@ -54,9 +54,7 @@ public class CallButton extends FrameLayout implements View.OnTouchListener {
 
         inflateView();
         parseProperties(a);
-        this.setOnTouchListener(this);
-        inner.setOnTouchListener(this);
-        shade.setOnTouchListener(this);
+        setViewListener();
     }
 
     public CallButton(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -67,9 +65,7 @@ public class CallButton extends FrameLayout implements View.OnTouchListener {
 
         inflateView();
         parseProperties(a);
-        this.setOnTouchListener(this);
-        inner.setOnTouchListener(this);
-        shade.setOnTouchListener(this);
+        setViewListener();
     }
 
     private void parseProperties(TypedArray a) {
@@ -77,7 +73,7 @@ public class CallButton extends FrameLayout implements View.OnTouchListener {
         Drawable ico = a.getDrawable(R.styleable.CallButtonOptions_icon_src);
 
         if (ico != null) {
-            ImageButton iconBtn = (ImageButton) inner.findViewById(R.id.icon);
+            iconBtn = (ImageButton) inner.findViewById(R.id.icon);
             iconBtn.setImageDrawable(ico);
         }
 
@@ -110,10 +106,17 @@ public class CallButton extends FrameLayout implements View.OnTouchListener {
         FrameLayout v = (FrameLayout) inflater.inflate(R.layout.call_button_view, null);
         inner = (LinearLayout) v.findViewById(R.id.inner_container);
         shade = (LinearLayout) v.findViewById(R.id.shade_container);
+        captionView = (TextView) v.findViewById(R.id.caption);
         // Release temporary parent
         v.removeAllViews();
         addView(inner);
         addView(shade);
+    }
+
+    private void setViewListener() {
+        this.setOnTouchListener(this);
+        iconBtn.setOnTouchListener(this);
+        captionView.setOnTouchListener(this);
     }
 
     public void setPhoneNumber(String phone) {
