@@ -31,9 +31,9 @@
             android:paddingBottom="5dp"
             app:icon_src="@mipmap/ic_police"
             app:background_color="#587498"
-            app:shade_color="#4fff4f"
             app:phone="110"
-            app:shade_alpha="55"
+            app:shade_color="#333"
+            app:shade_alpha="0.9"
             app:text="Police"/>
 
         <com.emovid.ege.view.CallButton
@@ -49,8 +49,8 @@
             app:icon_src="@mipmap/ic_fire"
             app:background_color="#b93029"
             app:phone="113"
-            app:shade_color="#4fff4f"
-            app:shade_alpha="55"
+            app:shade_color="#333"
+            app:shade_alpha="0.9"
             app:text="Fire"/>
     </TableRow>
 
@@ -71,9 +71,9 @@
             android:layout_height="match_parent"
             app:icon_src="@mipmap/ic_ambulance"
             app:background_color="#587058"
-            app:shade_color="#4fff4f"
             app:phone="118"
-            app:shade_alpha="55"
+            app:shade_color="#333"
+            app:shade_alpha="0.9"
             app:text="Ambulance"/>
 
         <com.emovid.ege.view.CallButton
@@ -89,8 +89,8 @@
             app:icon_src="@mipmap/ic_sar"
             app:background_color="#FFD800"
             app:phone="115"
-            app:shade_color="#4fff4f"
-            app:shade_alpha="55"
+            app:shade_color="#333"
+            app:shade_alpha="0.9"
             app:text="SAR"/>
     </TableRow>
 </TableLayout>
