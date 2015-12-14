@@ -42,7 +42,7 @@ public class QuickCallActivity extends AppCompatActivity implements LocationList
     LatLng userLocation;
     String cityName;
 
-    SpotegeFilterableList spoteges = new SpotegeFilterableList();
+    SpotEgeFilterableList spoteges = new SpotEgeFilterableList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,26 +51,26 @@ public class QuickCallActivity extends AppCompatActivity implements LocationList
         setContentView(R.layout.activity_quick_call);
 
         // Input data
-        //                      (latitude   , longitude   , TYPE read Spotege.java, name          , phone       )
-        spoteges.add(new Spotege(-7.770476,  110.384954,  SpotegeType.POLICE,    "Polisi Sektor Bulak Sumur ",   "0274557111"));
-        spoteges.add(new Spotege(-7.669801,  110.417959,  SpotegeType.POLICE,    "Polisi Sektor Pakem",          "0274895110"));
-        spoteges.add(new Spotege(-7.699376,  110.352692,  SpotegeType.POLICE,    "Polisi Sektor Turi",           "0274896705"));
-        spoteges.add(new Spotege(-7.652887,  110.326593,  SpotegeType.POLICE,    "Polisi Sektor Tempel",         "0274868110"));
-        spoteges.add(new Spotege(-7.697050,  110.346959,  SpotegeType.POLICE,    "Polisi Sektor Sleman",         "0274868424"));
-        spoteges.add(new Spotege(-7.753918,  110.383550,  SpotegeType.POLICE,    "Polisi Sektor Ngagklik",       "0274882810"));
-        spoteges.add(new Spotege(-7.771325,  110.467315,  SpotegeType.POLICE,    "Polisi Sektor Kalasan",        "0274496110"));
-        spoteges.add(new Spotege(-7.734591,  110.328510,  SpotegeType.POLICE,    "Polisi Sektor Mlati",          "0274869410"));
-        spoteges.add(new Spotege(-7.772230,  110.308501,  SpotegeType.POLICE,    "Polisi Sektor Godean",         "0274869110"));
-        spoteges.add(new Spotege(-7.802857,  110.314030,  SpotegeType.POLICE,    "Polisi Sektor Gamping",        "0274797110"));
-        spoteges.add(new Spotege(-7.7801722, 110.346321,  SpotegeType.FIRE,      "Pemadam Kebakaran Yogyakarta", "0274587101"));
-        spoteges.add(new Spotege(-7.768260,  110.373915,  SpotegeType.AMBULANCE, "RSUP Sardjito",                "0274587333"));
-        spoteges.add(new Spotege(-7.687639,  110.342202,  SpotegeType.AMBULANCE, "RSUD Sleman",                  "0274868437"));
-        spoteges.add(new Spotege(-7.755183,  110.242355,  SpotegeType.AMBULANCE, "RSU Baktiningsih",             "0274798281"));
-        spoteges.add(new Spotege(-7.772111,  110.466753,  SpotegeType.AMBULANCE, "RSU Panti Rini",               "0274496022"));
-        spoteges.add(new Spotege(-7.669054,  110.417138,  SpotegeType.AMBULANCE, "RSU Panti Nugroho ",           "0274897231"));
-        spoteges.add(new Spotege(-7.758593,  110.402989,  SpotegeType.AMBULANCE, "Jogja International Hospital", "02744463535"));
-        spoteges.add(new Spotege(-7.662427,  110.421739,  SpotegeType.AMBULANCE, "RSJ Grhasia Pakem",            "0274895297"));
-        spoteges.add(new Spotege(-7.8132229, 110.2593121, SpotegeType.SAR,       "BASARNAS Yogyakarta",          "0274587559"));
+        //                      (latitude   , longitude   , TYPE read SpotEge.java, name          , phone       )
+        spoteges.add(new SpotEge(-7.770476,  110.384954,  SpotEgeType.POLICE,    "Polisi Sektor Bulak Sumur ",   "0274557111"));
+        spoteges.add(new SpotEge(-7.669801,  110.417959,  SpotEgeType.POLICE,    "Polisi Sektor Pakem",          "0274895110"));
+        spoteges.add(new SpotEge(-7.699376,  110.352692,  SpotEgeType.POLICE,    "Polisi Sektor Turi",           "0274896705"));
+        spoteges.add(new SpotEge(-7.652887, 110.326593, SpotEgeType.POLICE, "Polisi Sektor Tempel", "0274868110"));
+        spoteges.add(new SpotEge(-7.697050,  110.346959,  SpotEgeType.POLICE,    "Polisi Sektor Sleman",         "0274868424"));
+        spoteges.add(new SpotEge(-7.753918,  110.383550,  SpotEgeType.POLICE,    "Polisi Sektor Ngagklik",       "0274882810"));
+        spoteges.add(new SpotEge(-7.771325,  110.467315,  SpotEgeType.POLICE,    "Polisi Sektor Kalasan",        "0274496110"));
+        spoteges.add(new SpotEge(-7.734591,  110.328510,  SpotEgeType.POLICE,    "Polisi Sektor Mlati",          "0274869410"));
+        spoteges.add(new SpotEge(-7.772230,  110.308501,  SpotEgeType.POLICE,    "Polisi Sektor Godean",         "0274869110"));
+        spoteges.add(new SpotEge(-7.802857,  110.314030,  SpotEgeType.POLICE,    "Polisi Sektor Gamping",        "0274797110"));
+        spoteges.add(new SpotEge(-7.7801722, 110.346321,  SpotEgeType.FIRE,      "Pemadam Kebakaran Yogyakarta", "0274587101"));
+        spoteges.add(new SpotEge(-7.768260,  110.373915,  SpotEgeType.AMBULANCE, "RSUP Sardjito",                "0274587333"));
+        spoteges.add(new SpotEge(-7.687639,  110.342202,  SpotEgeType.AMBULANCE, "RSUD Sleman",                  "0274868437"));
+        spoteges.add(new SpotEge(-7.755183,  110.242355,  SpotEgeType.AMBULANCE, "RSU Baktiningsih",             "0274798281"));
+        spoteges.add(new SpotEge(-7.772111,  110.466753,  SpotEgeType.AMBULANCE, "RSU Panti Rini",               "0274496022"));
+        spoteges.add(new SpotEge(-7.669054,  110.417138,  SpotEgeType.AMBULANCE, "RSU Panti Nugroho ",           "0274897231"));
+        spoteges.add(new SpotEge(-7.758593,  110.402989,  SpotEgeType.AMBULANCE, "Jogja International Hospital", "02744463535"));
+        spoteges.add(new SpotEge(-7.662427,  110.421739,  SpotEgeType.AMBULANCE, "RSJ Grhasia Pakem",            "0274895297"));
+        spoteges.add(new SpotEge(-7.8132229, 110.2593121, SpotEgeType.SAR,       "BASARNAS Yogyakarta",          "0274587559"));
 
         myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         myToolbar.setTitleTextColor(Color.WHITE);

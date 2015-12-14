@@ -1,6 +1,6 @@
 package com.emovid.ege;
 
-enum SpotegeType {
+enum SpotEgeType {
     POLICE,
     AMBULANCE,
     FIRE,
@@ -8,14 +8,14 @@ enum SpotegeType {
     PERSONAL
 }
 
-class Spotege {
+class SpotEge {
     double latitude;
     double longitude;
-    SpotegeType type;
+    SpotEgeType type;
     String name;
     String phone;
 
-    public Spotege(double latitude, double longitude, SpotegeType type, String name, String phone) {
+    public SpotEge(double latitude, double longitude, SpotEgeType type, String name, String phone) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.name = name;
@@ -23,7 +23,7 @@ class Spotege {
         this.phone = phone;
     }
 
-    public boolean isType(SpotegeType type) {
+    public boolean isType(SpotEgeType type) {
         return this.type == type;
     }
 
@@ -43,11 +43,11 @@ class Spotege {
         this.longitude = longitude;
     }
 
-    public SpotegeType getType() {
+    public SpotEgeType getType() {
         return type;
     }
 
-    public void setType(SpotegeType type) {
+    public void setType(SpotEgeType type) {
         this.type = type;
     }
 
