@@ -1,9 +1,21 @@
 apply plugin: 'com.android.application'
 
 android {
+    String KEY_ALIAS      = System.getenv('ANDROID_KEY_ALIAS');
+    String KEY_PASSWORD   = System.getenv('ANDROID_KEY_PASSWORD');
+    String STORE_FILE     = System.getenv('ANDROID_STORE_FILE');
+    String STORE_PASSWORD = System.getenv('ANDROID_STORE_PASSWORD');
+
+    signingConfigs {
+        release {
+            keyAlias KEY_ALIAS
+            keyPassword KEY_PASSWORD
+            storeFile file(STORE_FILE)
+            storePassword STORE_PASSWORD
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "23.0.0"
-
     defaultConfig {
         applicationId "com.emovid.ege"
         minSdkVersion 15
@@ -13,6 +25,7 @@ android {
     }
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
