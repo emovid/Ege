@@ -27,6 +27,9 @@ import java.util.Locale;
 
 public class QuickCallActivity extends AppCompatActivity implements LocationListener {
     public static String PACKAGE_NAME;
+
+    Toolbar myToolbar;
+
     LatLng userLocation;
     String cityName;
 
@@ -42,13 +45,11 @@ public class QuickCallActivity extends AppCompatActivity implements LocationList
         //                      (latitude   , longitude   , TYPE read Spotege.java, name          , phone       )
         spoteges.add(new Spotege(-7.768260, 110.373915, SpotegeType.AMBULANCE, "RSUP Sardjito", "0274557111"));
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         myToolbar.setTitleTextColor(Color.WHITE);
 
         setSupportActionBar(myToolbar);
         getUserLocation();
-
-        myToolbar.setTitle("Ege on " + cityName);
     }
 
     public void getUserLocation() {
