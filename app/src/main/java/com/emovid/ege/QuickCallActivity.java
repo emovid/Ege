@@ -25,11 +25,20 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import com.emovid.ege.view.CallButton;
+
 public class QuickCallActivity extends AppCompatActivity implements LocationListener {
     public static String PACKAGE_NAME;
 
+    // View
     Toolbar myToolbar;
 
+    CallButton policeButton;
+    CallButton ambulanceButton;
+    CallButton sarButton;
+    CallButton fireButton;
+
+    // Location Store
     LatLng userLocation;
     String cityName;
 
@@ -85,6 +94,7 @@ public class QuickCallActivity extends AppCompatActivity implements LocationList
         Location location = service.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         if(location != null && location.getTime() > Calendar.getInstance().getTimeInMillis() - 2 * 60 * 1000) {
             assignPreciseLocation(location);
+            assignPhoneNumbers();
 
             Log.d(PACKAGE_NAME, "getUserLocation().latitude :: " + userLocation.latitude);
             Log.d(PACKAGE_NAME, "getUserLocation().longitude :: " + userLocation.longitude);
@@ -148,10 +158,39 @@ public class QuickCallActivity extends AppCompatActivity implements LocationList
         }
     }
 
+    private void assignPhoneNumbers() {
+        policeButton    = (CallButton) findViewById(R.id.button_police);
+        ambulanceButton = (CallButton) findViewById(R.id.button_ambulance);
+        sarButton       = (CallButton) findViewById(R.id.button_sar);
+        fireButton      = (CallButton) findViewById(R.id.button_fire);
+
+        // For testing purpose
+        // double fakeLatitude = -7.7801722;
+        // double fakeLongitude = 110.384954;
+        // Spotege nearestPolice = spoteges.nearestSpotege(fakeLatitude, fakeLongitude, SpotegeType.POLICE);
+
+        Spotege nearestPolice = spoteges.nearestSpotege(userLocation.latitude, userLocation.longitude, SpotegeType.POLICE);
+        policeButton.setPhoneNumber(nearestPolice.getPhone());
+        Log.d(PACKAGE_NAME, "assignPhoneNumbers().police-phone :: " + nearestPolice.getPhone());
+
+        Spotege nearestAmbulance = spoteges.nearestSpotege(userLocation.latitude, userLocation.longitude, SpotegeType.AMBULANCE);
+        ambulanceButton.setPhoneNumber(nearestAmbulance.getPhone());
+        Log.d(PACKAGE_NAME, "assignPhoneNumbers().ambulance-phone :: " + nearestAmbulance.getPhone());
+
+        Spotege nearestSar = spoteges.nearestSpotege(userLocation.latitude, userLocation.longitude, SpotegeType.SAR);
+        sarButton.setPhoneNumber(nearestSar.getPhone());
+        Log.d(PACKAGE_NAME, "assignPhoneNumbers().sar-phone :: " + nearestSar.getPhone());
+
+        Spotege nearestFire = spoteges.nearestSpotege(userLocation.latitude, userLocation.longitude, SpotegeType.FIRE);
+        fireButton.setPhoneNumber(nearestFire.getPhone());
+        Log.d(PACKAGE_NAME, "assignPhoneNumbers().fire-phone :: " + nearestFire.getPhone());
+    }
+
     @Override
     public void onLocationChanged(Location location) {
         myToolbar.setTitle("Ege on " + cityName);
         assignPreciseLocation(location);
+        assignPhoneNumbers();
     }
 
     @Override
