@@ -143,6 +143,8 @@ public class QuickCallActivity extends AppCompatActivity implements LocationList
 
     private void assignPreciseLocation(Location location) {
         userLocation = new LatLng(location.getLatitude(), location.getLongitude());
+        Log.d(PACKAGE_NAME, "assignPreciseLocation().longitude :: " + userLocation.longitude);
+        Log.d(PACKAGE_NAME, "assignPreciseLocation().latitude :: " + userLocation.latitude);
 
         // Get location user-friendly name
         Geocoder gcd = new Geocoder(this.getApplicationContext(), Locale.getDefault());
