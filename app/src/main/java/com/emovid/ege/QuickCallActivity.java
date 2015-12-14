@@ -28,11 +28,20 @@ public class QuickCallActivity extends AppCompatActivity {
     LatLng userLocation;
     String cityName;
 
+    SpotegeFilterableList spoteges = new SpotegeFilterableList();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quick_call);
+
+        // Input data
+        //                      (latitude   , longitude   , TYPE read Spotege.java, name          , phone       )
+        spoteges.add(new Spotege(-7.768260, 110.373915, SpotegeType.AMBULANCE, "RSUP Sardjito", "0274557111"));
+
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        myToolbar.setTitleTextColor(Color.WHITE);
+
         setSupportActionBar(myToolbar);
         getUserLocation();
 
