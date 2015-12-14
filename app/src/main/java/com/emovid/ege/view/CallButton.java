@@ -116,7 +116,7 @@ public class CallButton extends FrameLayout implements View.OnTouchListener {
     }
 
     private void inflateView() {
-        Log.d("Flow", "Inflating...");
+        Log.d(QuickCallActivity.PACKAGE_NAME, "inflateView()");
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         FrameLayout v = (FrameLayout) inflater.inflate(R.layout.call_button_view, null);
@@ -162,16 +162,16 @@ public class CallButton extends FrameLayout implements View.OnTouchListener {
         long intervalTouchTime = pressTime - lastPressTime;
 
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
-            Log.d("Touch Measure", "Time interval : " + (pressTime - lastPressTime));
+            Log.d(QuickCallActivity.PACKAGE_NAME, "onTouch().time-interval :: " + (pressTime - lastPressTime));
             if (intervalTouchTime <= DOUBLE_PRESS_INTERVAL) {
-                Log.d("Touch Action", "Double Tap");
+                Log.d(QuickCallActivity.PACKAGE_NAME, "onTouch().action :: Double Tap");
                 // If double click...
-                Log.d("PHONE Number", this.getPhoneNumber().toString());
+                Log.d(QuickCallActivity.PACKAGE_NAME, "getPhoneNumber().phone :: " + this.getPhoneNumber().toString());
                 ((QuickCallActivity) this.context).callPhoneNumber(this.getPhoneNumber());
             } else {
                 // If not double click....
-                Log.d("Touch Action", "A Tap");
-                Log.d("[Animate]", "Fade to and from " + shadeAlpha);
+                Log.d(QuickCallActivity.PACKAGE_NAME, "onTouch().action :: A Tap");
+                Log.d(QuickCallActivity.PACKAGE_NAME, "onTouch().animate :: Fade to and from " + shadeAlpha);
 
                 AlphaAnimation fadeIn = new AlphaAnimation(shade.getAlpha(), shadeAlpha);
                 fadeIn.setInterpolator(new LinearInterpolator());

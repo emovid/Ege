@@ -21,10 +21,12 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.io.IOException;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
 public class QuickCallActivity extends AppCompatActivity {
+    public static String PACKAGE_NAME;
     LatLng userLocation;
     String cityName;
 
@@ -32,6 +34,7 @@ public class QuickCallActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        PACKAGE_NAME = getApplicationContext().getPackageName();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quick_call);
 
