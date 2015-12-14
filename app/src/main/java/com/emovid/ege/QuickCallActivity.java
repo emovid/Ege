@@ -8,7 +8,6 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
-import android.location.LocationManager;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -21,11 +20,11 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.io.IOException;
 
-import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
 import com.emovid.ege.view.CallButton;
+import com.emovid.ege.ConditionalLocationManager.LocationResult;
 
 public class QuickCallActivity extends AppCompatActivity implements LocationListener {
     public static String PACKAGE_NAME;
@@ -37,6 +36,10 @@ public class QuickCallActivity extends AppCompatActivity implements LocationList
     CallButton ambulanceButton;
     CallButton sarButton;
     CallButton fireButton;
+
+    // Utility class
+    ConditionalLocationManager locatio;
+    LocationResult locationResult;
 
     // Location Store
     LatLng userLocation;
@@ -75,33 +78,23 @@ public class QuickCallActivity extends AppCompatActivity implements LocationList
         myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         myToolbar.setTitleTextColor(Color.WHITE);
 
+        locationResult = new LocationResult(){
+            @Override
+            public void gotLocation(Location location) {
+                assignPreciseLocation(location);
+                Log.d(PACKAGE_NAME, "gotLocation().city-name :: " + cityName);
+                if (cityName == "" || cityName == null) {
+                    myToolbar.setTitle("Ege");
+                } else {
+                    myToolbar.setTitle("Ege on " + cityName);
+                }
+                assignPhoneNumbers();
+            }
+        };
+        locatio = new ConditionalLocationManager();
+
         setSupportActionBar(myToolbar);
-        getUserLocation();
-    }
-
-    public void getUserLocation() {
-        LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        Location location = service.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        if(location != null && location.getTime() > Calendar.getInstance().getTimeInMillis() - 2 * 60 * 1000) {
-            assignPreciseLocation(location);
-            assignPhoneNumbers();
-
-            Log.d(PACKAGE_NAME, "getUserLocation().latitude :: " + userLocation.latitude);
-            Log.d(PACKAGE_NAME, "getUserLocation().longitude :: " + userLocation.longitude);
-        } else {
-            Log.d(PACKAGE_NAME, "getUserLocation() :: " + "Location not found");
-            service.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, (LocationListener) this);
-        }
+        locatio.getLocation(this, locationResult);
     }
 
     @Override
@@ -120,7 +113,7 @@ public class QuickCallActivity extends AppCompatActivity implements LocationList
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_gps) {
-            getUserLocation();
+            locatio.getLocation(this, locationResult);
             return true;
         }
 
@@ -153,44 +146,38 @@ public class QuickCallActivity extends AppCompatActivity implements LocationList
         try {
             adrs = gcd.getFromLocation(userLocation.latitude, userLocation.longitude, 1);
             cityName = adrs.get(0).getLocality();
+            Log.d(PACKAGE_NAME, "assignPreciseLocation().address :: " + adrs.get(0).toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     private void assignPhoneNumbers() {
-        policeButton    = (CallButton) findViewById(R.id.button_police);
-        ambulanceButton = (CallButton) findViewById(R.id.button_ambulance);
-        sarButton       = (CallButton) findViewById(R.id.button_sar);
-        fireButton      = (CallButton) findViewById(R.id.button_fire);
-
         // For testing purpose
         // double fakeLatitude = -7.7801722;
         // double fakeLongitude = 110.384954;
-        // Spotege nearestPolice = spoteges.nearestSpotege(fakeLatitude, fakeLongitude, SpotegeType.POLICE);
+        // SpotEge nearestPolice = spoteges.nearestSpotEge(fakeLatitude, fakeLongitude, SpotEgeType.POLICE);
 
-        Spotege nearestPolice = spoteges.nearestSpotege(userLocation.latitude, userLocation.longitude, SpotegeType.POLICE);
+        SpotEge nearestPolice = spoteges.nearestSpotEge(userLocation.latitude, userLocation.longitude, SpotEgeType.POLICE);
         policeButton.setPhoneNumber(nearestPolice.getPhone());
         Log.d(PACKAGE_NAME, "assignPhoneNumbers().police-phone :: " + nearestPolice.getPhone());
 
-        Spotege nearestAmbulance = spoteges.nearestSpotege(userLocation.latitude, userLocation.longitude, SpotegeType.AMBULANCE);
+        SpotEge nearestAmbulance = spoteges.nearestSpotEge(userLocation.latitude, userLocation.longitude, SpotEgeType.AMBULANCE);
         ambulanceButton.setPhoneNumber(nearestAmbulance.getPhone());
         Log.d(PACKAGE_NAME, "assignPhoneNumbers().ambulance-phone :: " + nearestAmbulance.getPhone());
 
-        Spotege nearestSar = spoteges.nearestSpotege(userLocation.latitude, userLocation.longitude, SpotegeType.SAR);
+        SpotEge nearestSar = spoteges.nearestSpotEge(userLocation.latitude, userLocation.longitude, SpotEgeType.SAR);
         sarButton.setPhoneNumber(nearestSar.getPhone());
         Log.d(PACKAGE_NAME, "assignPhoneNumbers().sar-phone :: " + nearestSar.getPhone());
 
-        Spotege nearestFire = spoteges.nearestSpotege(userLocation.latitude, userLocation.longitude, SpotegeType.FIRE);
+        SpotEge nearestFire = spoteges.nearestSpotEge(userLocation.latitude, userLocation.longitude, SpotEgeType.FIRE);
         fireButton.setPhoneNumber(nearestFire.getPhone());
         Log.d(PACKAGE_NAME, "assignPhoneNumbers().fire-phone :: " + nearestFire.getPhone());
     }
 
     @Override
     public void onLocationChanged(Location location) {
-        myToolbar.setTitle("Ege on " + cityName);
-        assignPreciseLocation(location);
-        assignPhoneNumbers();
+        locationResult.gotLocation(location);
     }
 
     @Override
