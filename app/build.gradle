@@ -7,11 +7,13 @@ android {
     String STORE_PASSWORD = System.getenv('ANDROID_STORE_PASSWORD');
 
     signingConfigs {
-        release {
-            keyAlias KEY_ALIAS
-            keyPassword KEY_PASSWORD
-            storeFile file(STORE_FILE)
-            storePassword STORE_PASSWORD
+        if (STORE_FILE != null) {
+            release {
+                keyAlias KEY_ALIAS
+                keyPassword KEY_PASSWORD
+                storeFile file(STORE_FILE)
+                storePassword STORE_PASSWORD
+            }
         }
     }
     compileSdkVersion 23
@@ -25,7 +27,9 @@ android {
     }
     buildTypes {
         release {
-            signingConfig signingConfigs.release
+            if (STORE_FILE != null) {
+                signingConfig signingConfigs.release
+            }
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
