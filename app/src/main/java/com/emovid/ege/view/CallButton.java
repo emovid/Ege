@@ -157,7 +157,7 @@ public class CallButton extends FrameLayout implements View.OnTouchListener {
             if (intervalTouchTime <= DOUBLE_PRESS_INTERVAL) {
                 Log.d(QuickCallActivity.PACKAGE_NAME, "onTouch().action :: Double Tap");
                 // If double click...
-                Log.d(QuickCallActivity.PACKAGE_NAME, "getPhoneNumber().phone :: " + this.getPhoneNumber().toString());
+                Log.d(QuickCallActivity.PACKAGE_NAME, "getPhoneNumber().phone :: " + this.getPhoneNumber());
                 ((QuickCallActivity) this.context).callPhoneNumber(this.getPhoneNumber());
             } else {
                 // If not double click....
