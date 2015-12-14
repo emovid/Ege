@@ -43,7 +43,7 @@ public class QuickCallActivity extends AppCompatActivity implements LocationList
 
     // Location Store
     LatLng userLocation;
-    String cityName;
+    String cityName = "";
 
     SpotEgeFilterableList spoteges = new SpotEgeFilterableList();
 
